@@ -1,0 +1,106 @@
+{% extends 'base/DoorServer_base.html' %}
+{% load static %}
+
+{% block title %}
+<title>회원가입 약간</title>
+{% endblock %}
+
+{% block script %}
+<script defer type="module" src="{% static 'DoorServer/js/SignUpPageIntro.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'DoorServer/css/SignUpPageIntro.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center"><a href="/"><img src = "{% static 'DoorServer/img/CodeSyncLogo2.png' %}" style="width: 250px;"></a> </div>
+    <p class="text-center mt-5 ment">Agree to Terms to Create Your Account</p>
+    <div class="mainContainer">
+
+        <div class="form-cover">
+            <div id="acceptContainerOne">
+                <div class="accordion" id="accordionExample1">
+                    <!--첫번째 동의서 내용-->
+                    <div class="form-check">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                CodeSync 이용 약관
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione blanditiis, velit qui quas at aliquam cumque voluptatum sit corrupti quaerat numquam quisquam cupiditate dicta, porro pariatur reiciendis quam quae facilis laborum labore quasi sunt error doloribus saepe. Ab corporis, minus a, vel libero placeat ullam, saepe dolorem eius ipsum aspernatur amet maxime dolorum ea unde nihil obcaecati est voluptate repudiandae dolor neque quibusdam reprehenderit culpa autem? Sint qui repellendus officia velit quis consequatur? Veritatis sapiente consectetur reprehenderit cumque aut sed tempora repellat, accusantium nihil mollitia vel recusandae fugiat delectus voluptatum dolores placeat ratione similique alias dignissimos omnis ullam sit? Eos.
+                                </div>
+                        </div>
+                    </div>
+                    <!--동의 버튼-->
+                    <div class="submitBox mb-4 mt-2 ps-4 number1">
+                        <input class="form-check-input checkedBox1 essential agr1" type="checkbox" data-value="no" id="flexCheckDefault1">
+                        <label id="checkLabel1" class="form-check-label" for="flexCheckDefault1">
+                            <span class="check-nssr">[필수]&nbsp;&nbsp;</span>
+                            <span>동의 합니다.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        <div id="acceptContainerTwo">
+            <div class="accordion" id="accordionExample2">
+                <!--두번째 동의서 내용-->
+                <div class="form-check">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            개인정보 수집 및 이용
+                        </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam illum nemo at voluptatum exercitationem dicta dolorem, repellat esse aliquid! Impedit molestiae vero nulla non, assumenda nobis blanditiis ratione quod numquam inventore totam aut deserunt dolorum. Sapiente doloribus libero in totam error dolorum fugit sed deleniti cupiditate impedit quia, vel quidem sunt laboriosam iusto nulla earum velit saepe quas laborum aliquam. Quasi possimus, voluptatum nihil itaque fugiat unde? Repudiandae distinctio quo omnis sunt deserunt qui aliquid, labore, quia, a illo dignissimos? Ipsam distinctio explicabo error neque ducimus iste, non quis atque natus veniam molestiae necessitatibus temporibus in alias ullam blanditiis nam.
+                        </div>
+                        </div>
+                    </div>
+                <!--동의 버튼-->
+                <div class="submitBox mb-4 mt-2 ps-4 number2">
+                    <input class="form-check-input checkedBox2 essential agr2" type="checkbox" data-value="no" id="flexCheckDefault2">
+                    <label id="checkLabel2" class="form-check-label" for="flexCheckDefault2">
+                        <span class="check-nssr">[필수]&nbsp;&nbsp;</span>
+                        <span>동의 합니다.</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="acceptContainerTwo">
+            <div class="accordion" id="accordionExample3">
+                <!--세번째 동의서 내용-->
+                <div class="form-check">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            개인정보 수집 및 이용
+                        </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolor corporis deserunt culpa enim ex suscipit beatae sequi eveniet earum consectetur natus ipsam nostrum et cumque esse explicabo blanditiis accusantium, quas, porro architecto? Iure corporis, hic dolore vero, natus ut quod provident possimus, enim totam deserunt quia pariatur reiciendis praesentium officia eveniet cumque doloribus alias excepturi tempora molestiae! Culpa ducimus, non nesciunt accusantium voluptas explicabo nemo aspernatur dolores dolorum doloribus tempora pariatur amet nam impedit dicta, quos saepe dolor, id alias? Neque quos eveniet aut, ipsam odit reprehenderit! Ducimus temporibus quo unde beatae assumenda veniam repellat explicabo voluptatem hic cupiditate.
+                        </div>
+                        </div>
+                    </div>
+                <!--동의 버튼-->
+                <div class="submitBox mb-4 mt-2 ps-4 number3">
+                    <input class="form-check-input checkedBox3 choice agr3" type="checkbox" data-value="no" id="flexCheckDefault3">
+                    <label id="checkLabel3" class="form-check-label" for="flexCheckDefault3">
+                        <span class="check-otnl">[선택]&nbsp;&nbsp;</span>
+                        <span>동의 합니다.</span>
+                    </label>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <button id="submitButton" class="btn btn-primary" style="width: 100%;">제출</button>
+    </div>
+</div>
+{% endblock %}

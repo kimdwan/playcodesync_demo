@@ -1,0 +1,320 @@
+
+
+.h-px {
+    height: auto !important;
+    position: relative !important;
+
+}
+.dashB-container {
+    /* height: 1200px; */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+}
+
+.dash-row-height {
+    height:35%;
+}
+.dash-row-height2{
+    height: 35%;
+}
+
+.dashB-box {
+    /* border: 1px black solid; */
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    color: #2e2e2e;
+}
+
+.dashB-box:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);  
+    transform: translate(2px, 2px);  
+}
+
+.username-gra {
+    background-image: linear-gradient(to right, #ff8453, #ff0f0f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+.box1 {
+    cursor: pointer;
+    background: linear-gradient(to bottom right, #c4fbff, #acdbdf);
+
+}
+
+
+.box2 {
+    background: linear-gradient(to bottom right, #e5bfff, #d2afe9);
+}
+.recentEduData {
+    margin: 10px 0 10px 0;
+}
+.recentInfo{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+.study-percent {
+    display: flex;
+    align-items: center;
+    gap: 400px;
+    font-size: 21px;
+    margin-left: 12px;
+    color: #3f3f3f;
+    
+}
+.recentWdw {
+    display: flex;
+    justify-content: end;
+
+}
+.recentWdw2 {
+    /* margin-top: 30px; */
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    background-color: rgb(220, 234, 235);
+    cursor: pointer;
+    display: flex;
+}
+
+.recentWdw2:hover {
+    background-color: #383838;
+    color:rgb(230, 230, 230);
+}
+
+.recentBtn {
+    border: none;
+    background: none;
+
+}
+.fa-level-up-alt {
+    margin: 0 0 0 0;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.fa-python {
+    text-shadow: 
+    0.5px 0.5px 1px #ffffff, 
+    1px 1px 2px #bebebe, 
+    -0.5px -0.5px 0.5px #ffffff, 
+    -1px -1px 1px #ffffff; 
+}
+.progress-circle {
+  font-size: 48px; /* 또는 원하는 크기 */
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #efefef;
+  text-align: center;
+  line-height: 200px; /* 원의 크기와 같게 */
+}
+
+.progress-circle span {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+.left-half-clipper {
+  /* a round circle */
+  border-radius: 50%;
+  clip: rect(0, 200px, 200px, 100px);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.first50-bar, .value-bar {
+  /* make them round */
+  border-radius: 50%;
+  clip: rect(0, 100px, 200px, 0);
+  height: 100%;
+  position: absolute;
+  width: 200px;
+}
+
+.first50-bar {
+  background: #555;
+  transform: rotate(0deg);
+}
+
+.value-bar {
+  background: #06c;
+  /* Adjust this to change the percentage */
+  transform: rotate(180deg); /* 50% */
+}
+
+.re
+.box3, .box4, .box5 {
+    background: linear-gradient(to bottom right, #fffcd6, #fcf8cb);
+}
+.box3 {
+    padding : 20px 20px 0 20px !important;
+}
+#studyTime-graph {
+    /* position: relative; */
+    height: 300px;
+    width: 100%;
+  }
+#studyTime-graph > div{
+    width:100% !important;
+}
+canvas {
+    width: 100% !important;
+}
+#studyY
+
+.retry-Part {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.retry-List {
+    height: 100px;
+    background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.box6, .box7 {
+    background: linear-gradient(to bottom right, #d2ffd1, #c8fac7);
+}
+
+.box8 {
+    background: linear-gradient(to bottom right, #fcfcfc, #f3f3f3);
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+/* .startNew {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: aliceblue; 
+    border-radius: 15px; 
+    padding: 2px 15px; 
+    border: 1.5px #bb56ff solid;
+} */
+
+.subjectList > a {
+    text-decoration: none;
+    color: black;
+}
+
+.guideModal {
+    display: none; /* 기본적으로 숨겨진 상태 */
+    position: fixed; /* 스크롤 시에도 같은 위치에 머무름 */
+    z-index: 1; /* 다른 요소들 위에 레이어 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    overflow: auto; /* 모달 컨텐츠가 넘칠 경우 스크롤 가능 */
+    background-color: rgb(0,0,0); /* 배경은 어둡게 */
+    background-color: rgba(0,0,0,0.9); /* 약간의 투명도 추가 */
+  }
+  
+  /* 모달 컨텐츠 스타일링 */
+  .guideModal-content {
+    background-color: none;
+    /* margin: 10% auto; */
+    /* padding: 20px; */
+    border: none;
+    width: 100%; /* 대부분의 화면을 차지하지 않게 */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 200px;
+  }
+  
+  .guideclose {
+    color: #dddddd;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top:10px;
+    right: 30px;
+    font-size: 80px;
+  }
+  
+  .guideclose:hover,
+  .guideclose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .guide-font {
+    line-height: 50px;
+  }
+
+  .info-section {
+    /* background-color: rgb(255, 215, 166); */
+    background: linear-gradient(to bottom right, #3e88ff, #76abff);
+
+    height: 1550px;
+}
+@media screen and (max-width: 800px) {
+    .info-section {
+        height: 3500px;
+    }
+}
+.chapterInfo-ment {
+    text-shadow: 
+    0.5px 0.5px 1px #3f3f3f, 
+    1px 1px 2px #000000, 
+    -0.5px -0.5px 0.5px #e1eeff, 
+    -1px -1px 1px #e1eeff; 
+}
+
+.chapterInfo {
+    background-color: rgb(115, 83, 234, 0.7);
+    color: rgb(230, 230, 230);
+    
+}
+.chapterInfo-nm {
+    font-size: 25px;
+    color: rgb(230, 230, 230);
+    text-shadow: 
+    0.5px 0.5px 1px #4e4e4e, 
+    1px 1px 2px #bebebe, 
+    -0.5px -0.5px 0.5px #ffffff, 
+    -1px -1px 1px #ffffff; 
+}
+.chapBtn {
+    color: rgb(230, 230, 230) !important;
+    text-shadow: 
+    0.5px 0.5px 1px #4e4e4e, 
+    1px 1px 2px #bebebe, 
+    -0.5px -0.5px 0.5px #ffffff, 
+    -1px -1px 1px #ffffff; 
+    cursor: pointer;
+}
+.chapBtn:hover {
+    color: #4e4e4e !important;
+}
+.chapterInfo-n {
+    font-size: 25px;
+    color: #3f3f3f;
+
+}
+
+
+.chatInfo-ph {
+    letter-spacing: 1px;
+    color: #dbdbdb;
+}

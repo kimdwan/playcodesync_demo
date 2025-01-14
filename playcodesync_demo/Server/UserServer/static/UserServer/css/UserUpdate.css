@@ -1,0 +1,84 @@
+body{ 
+    height: 1050px;
+}
+
+.container {
+    max-width: 700px !important;
+}
+
+.ment {
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.001px;
+}
+.form-cover {
+    border-radius: 10px;
+    background-color: rgb(244, 244, 244);
+    padding: 20px;
+    margin: 20px 0 30px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.newpw {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#id_password1,
+#id_password2 {
+    flex:1;
+    border: 0.5px rgb(221, 221, 221) solid;
+    border-radius: 5px;
+    height: 45px !important;
+    transition: 0.1s;
+}
+
+#id_password1:focus,
+#id_password2:focus {
+    outline: 5px solid rgb(162, 203, 236);
+}
+
+.update-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.infolist {
+    width: 25%;
+}
+
+.nameLi {
+    display: flex;
+    align-items: center;
+    gap:31.5px;
+}
+
+.namefir,
+.namela {
+    flex:1 !important;
+    border: 0.5px rgb(221, 221, 221) solid !important;
+    border-radius: 5px !important;
+}
+
+.genderForm {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.phone-custom {
+    display: flex !important;
+}
+
+.phoneNum {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.a {
+    border: 0.5px rgb(221, 221, 221) solid !important;
+    border-radius: 5px !important;
+}

@@ -1,0 +1,56 @@
+html, body {
+    height: 100vh;
+}
+
+#userInfo-dash {
+    cursor: pointer;
+}
+#userInfo-popup-dash {
+    border-radius: 10px;
+    border: none;
+    display: none; 
+    position: absolute; 
+    background-color: #f9f9f9; 
+    width: 420px; 
+    height: 200px;  /* 고정 높이 설정 */
+    padding: 10px;
+    opacity: 0;
+    overflow: auto;  /* 내용이 넘치면 스크롤바 표시 */
+    transition: opacity 0.5s;
+    z-index: 40;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.userInfo-ni{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.userFavicon {
+    margin-right: 20px;
+}
+#userInfo-popup-dash > *:first-child {
+    border-bottom: 1px solid #ccc;  /* 선의 색상은 #ccc 입니다. */
+    padding-bottom: 20px;           /* 아래 패딩을 추가하여 선과 내용 사이에 간격을 줍니다. */
+    margin-bottom: 20px;            /* 아래쪽 마진을 추가하여 다음 요소와의 간격을 줍니다. */
+}
+.userInfo-btn{
+    display: flex;
+    justify-content: center;
+    
+}
+.accountInfo-change-popup,
+.logOutbtn-popup {
+    padding: 15px 40px !important;
+    color: #e6e9f3 !important;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+    margin-right: 10px;
+    background-color: #3e88ff;
+    font-size: 15px;
+}
+
+.navbar {
+    height: 10%;
+}

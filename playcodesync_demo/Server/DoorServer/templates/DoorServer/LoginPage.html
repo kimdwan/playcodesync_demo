@@ -1,0 +1,60 @@
+{% extends 'base/DoorServer_base.html' %}
+{% load static %}
+
+{% block scripts %}
+<script defer type="module" src="{% static 'DoorServer/js/LoginPage.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'DoorServer/css/LoginPage.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>로그인 페이지</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center"><a href="/"><img src = "{% static 'DoorServer/img/CodeSyncLogo2.png' %}" style="width: 250px;"></a> </div>
+    <p class="text-center mt-5 ment">Sign In to Play CodeSync</p>
+    <div class="form-cover">
+
+        <form method="post">
+
+        <!--유저 아이디 적는칸-->
+        <div class="mb-3">
+            <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+            {% csrf_token %}
+            <input type="text" class="form-control" id="username" name="username" required>
+            {% if form.username.errors %}
+                <div class="error">{{ form.username.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!--비밀번호 적는칸 이 알맹이만 살아 있으면 문제 없을것입니다. -->
+        <div class="mb-3">
+            <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+            {% csrf_token %}
+            <input type="password" class="form-control" id="password" name="password" required>
+            {% if form.password.errors %}
+                <div class="error">{{ form.password.errors }}</div>
+            {% endif %}
+        </div>
+
+        <input type="submit" value="Login" class="btn btn-primary" style="width: 100%;">
+
+        </form>
+
+    </div>
+    <div class="etc">
+        <a href="">Terms</a>
+        /
+        <a href="">Privacy</a>
+        /
+        <a href="">Contact BNVS</a>
+    </div>
+</div>
+
+
+{% endblock %}
+

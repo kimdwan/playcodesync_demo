@@ -1,0 +1,134 @@
+{% extends 'base/DoorServer_base.html' %}
+{% load static %}
+
+{% block script %}
+<script defer type="module" src="{% static 'DoorServer/js/MainPage.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'DoorServer/css/MainPage.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>메인페이지</title>
+{% endblock %}
+
+{% block content %}
+<main class="main" id="top" style="height: 100vh;">
+    <nav class="navbar navbar-expand-lg navbar-light pt-3 pb-3">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="{% static 'base/img/CodeSyncLogo2.png' %}" height="40" alt="logo" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon">
+                </span>
+            </button>
+
+            <div class="d-flex ms-lg-4"> 
+                {% if user.is_authenticated %}
+                <div class="nav-hello fs-4">{{ request.user.username }}님 <i class="fas fa-hand-paper fa-lg fa-rotate-45 ms-1" style="color: #ffd753;"></i></div>
+                <a class="btn btn-warning btn-signup btn-lg fw-bold ms-3" href="{% url 'DoorServer:LogoutPage' %}">Sign Out</a> 
+                {% else %}
+                <button class="btn btn-secondary-outline btn-lg fw-bold" id="loginButton">로그인</button>
+                <a class="btn btn-warning btn-signup ms-3 btn-lg fw-bold" href="{% url 'DoorServer:SignUpPageInit' %}">Sign Up</a> 
+                
+
+                <!-- 로그인 모달 -->
+                <div id="loginModal" class="modal">
+                    <div class="modal-content">
+                        <div class="close">&times;</div>
+                        <!-- 로그인 폼 내용 -->
+                        <div class="container pt-4">
+                            <div class="d-flex justify-content-center"><a href=""><img src="{% static 'DoorServer/img/CodeSyncLogo2.png' %}"
+                                        style="width: 250px;"></a> </div>
+                            <p class="text-center mt-3 ment">Sign In to Play CodeSync</p>
+                            <div class="form-cover mb-3">
+                        
+                                <form method="post">
+                        
+                                    <!--유저 아이디 적는칸-->
+                                    <div class="mb-3">
+                                        <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                                        {% csrf_token %}
+                                        <input type="text" class="form-control" id="username" name="username" required>
+                                        {% if form.username.errors %}
+                                        <div class="error">{{ form.username.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                        
+                                    <!--비밀번호 적는칸 이 알맹이만 살아 있으면 문제 없을것입니다. -->
+                                    <div class="mb-3">
+                                        <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+                                        {% csrf_token %}
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        {% if form.password.errors %}
+                                        <div class="error">{{ form.password.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                        
+                                    <input type="submit" value="Login" class="btn btn-primary" style="width: 100%;">
+                        
+                                </form>
+                        
+                            </div>
+                            <div class="etc">
+                                <a href="/">Terms</a>
+                                /
+                                <a href="/">Privacy</a>
+                                /
+                                <a href="/">Contact BNVS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <section class="info-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-md-start text-center pt-custom py-6">
+                    <!-- <div class="tname">Play CodeSync</div> -->
+                    <h1 class="mb-3 fs-1">재미있고 쉬운 코딩, <br />지금 시작하세요!</h1>
+                    <div class="mb-3 lead fs-5">
+                        <div class="mb-2">
+                            AI와 함께하는 코딩세상에 
+                            뛰어들 준비가 되었나요?
+                        </div>
+                        <div class="mb-2">
+                            재미있고 쉽게 당신에게 딱 맞는
+                            코딩 학습을 시작해 봐요!
+                        </div>
+                        <div>
+                            CodeSync와 함께라면,
+                            프로그래밍이 놀이가 됩니다!
+                        </div>
+                    </div>
+                    <div class="text-center text-md-start">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            과목선택 
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <a class="btn btn-warning me-3 btn-lg fw-bold" href="{% url 'DoorServer:UserServer:MainPage' username %}" role="button">파이썬일반</a>
+                        </ul>
+                        <button id="guideButton" class="btn btn-link text-warning fw-medium text-black"><span class="fas fa-play me-2"></span>User Guide</button>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end pt-custom"><img class="pt-7 pt-md-0 img-fluid index-img" src="{% static 'DoorServer/img/index_img.png' %}" width="550" alt="" /></div>
+            </div>
+        </div>
+    </section>
+    <!-- User Guide 모달 -->
+    <div id="guideModal" class="guideModal">
+        <div class="guideModal-content">
+            <div class="guideclose">&times;</div>
+        
+            <img src="{% static 'DoorServer/img/userguide_horizon.png' %}" style="width: 90%; margin-top: 150px;">
+
+            <!-- </div> -->
+        </div>
+    </div>
+</main>
+{% endblock %}
+

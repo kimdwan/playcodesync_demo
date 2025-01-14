@@ -1,0 +1,54 @@
+.container {
+    max-width: 350px !important;
+    
+}
+
+.ment {
+    margin-top: 100px;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.001px;
+}
+
+.form-cover {
+    border-radius: 10px;
+    background-color: rgb(244, 244, 244);
+    padding: 20px;
+    margin: 20px 0 30px 0;
+}
+
+.form-label {
+    font-weight: 300;
+    font-size: 18px;
+}
+#id_username, #id_password1, #id_password2,
+#id_email, #id_bnvs_code {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.etc {
+    display: flex;
+    justify-content: center;
+    gap : 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.inform-delete {
+    text-align: center;
+}

@@ -1,0 +1,4 @@
+1. mainpage 템플릿 구조
+base -> head, footer 존재, 그외 부트스트랩 다운로드
+
+2. restapi 에서 model과 관련된 urls은 obedia를 붙힘

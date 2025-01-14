@@ -1,0 +1,36 @@
+.container {
+    max-width: 350px !important;
+}
+
+.ment {
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.001px;
+}
+
+.form-cover {
+    border-radius: 10px;
+    background-color: rgb(244, 244, 244);
+    padding: 20px;
+    margin: 20px 0 30px 0;
+}
+
+.form-label {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.etc {
+    display: flex;
+    justify-content: center;
+    gap : 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.inform-delete {
+    text-align: center;
+}

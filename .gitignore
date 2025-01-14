@@ -1,0 +1,3 @@
+env
+playcodesync_demo/.env
+playcodesync_demo/**/*/__pycache__

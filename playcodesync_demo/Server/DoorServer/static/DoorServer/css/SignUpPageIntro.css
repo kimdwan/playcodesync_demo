@@ -1,0 +1,47 @@
+.container {
+    max-width: 500px !important;
+}
+
+.form-cover {
+    border-radius: 10px;
+    background-color: rgb(244, 244, 244);
+    padding: 20px;
+    margin: 20px 0 30px 0;
+}
+
+.ment {
+    margin-top: 100px;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.001px;
+}
+
+.form-check {
+    padding:0 !important;
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+/* .submit-box {
+    display: flex;
+} */
+
+.accordion-body {
+    max-height: 120px;
+    overflow: auto;
+}
+
+.form-check-label {
+    display: flex;
+    align-items: center;
+}
+
+.check-nssr {
+    font-size: 15px;
+    color: rgb(78, 63, 245)
+}
+.check-otnl {
+    font-size: 15px;
+    color: rgb(173, 173, 173)
+}

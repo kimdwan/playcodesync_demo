@@ -1,0 +1,108 @@
+{% extends 'base/UserServer_base.html' %}
+{% load static %}
+
+{% block scripts %}
+<script type="module" defer src="{% static 'UserServer/js/UserUpdate.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'UserServer/css/UserUpdate.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>회원정보 수정</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="updateContainer container">
+    <!-- <div class="d-flex justify-content-center"><a href="/"><img src = "{% static 'DoorServer/img/CodeSyncLogo2.png' %}" style="width: 250px;"></a> </div> -->
+    <p class="text-center ment">Change Member Information</p>
+    <div class="form-cover">
+        <form method="post">
+            <!--비밀번호 확인-->
+    
+            <div class="mb-2">비밀번호 수정</div>
+            <hr>
+            <div class="input-group mb-3 newpw">
+                <div class="infolist">새로운 비밀번호</div>
+                {% csrf_token %}
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="error">{{ form.password1.errors}}</div>
+                {% endif %}
+            </div>
+            <div class="input-group mb-3 newpw">
+                <div class="infolist">비밀번호 확인</div>
+                {% csrf_token %}
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="error">{{ form.password2.errors}}</div>
+                {% endif %}
+            </div>
+            <!--추가 버튼-->
+            <div class="update-btn"><button type="submit" class="btn btn-primary">비밀번호 변경</button></div>
+            
+        </form>
+    </div>
+    <div class="form-cover">    
+            <!--여기는 자유롭게 수정하는 장소-->
+            <!--이름 입력-->
+        <div>
+            <div class="mb-2">상세정보 수정</div>
+            <hr>
+            <div class="input-group mb-3 nameLi">
+                <div class="nameLi">성</div>
+                <input id="firstName" type="text" aria-label="성" class="form-control namefir" value="{{ request.user.first_name }}">
+                <div class="nameLi">이름</div>
+                <input id="lastName" type="text" aria-label="이름" class="form-control namela" value="{{ request.user.last_name }}">
+            </div>
+            <!--성별-->
+            <div class="input-group mb-3 genderForm">
+                <div>성별</div>
+                <select class="form-select sex a" id="inputGroupSelect03" aria-label="select gender">
+                {% if request.user.gender == "남자" %}
+                    <option selected>남자</option>
+                {% elif request.user.gender == "여자" %}
+                    <option selected>여자</option>
+                {% else %}
+                    <option selected>성별</option>
+                {% endif %}
+                <option value="남자">남자</option>
+                <option value="여자">여자</option>
+                </select>
+            </div>
+            <div class="input-group mb-3 genderForm">
+                <div>그룹</div>
+                <select class="form-select group a" id="inputGroupSelect03" aria-label="select society">
+                {% if request.user.society %}
+                    <option selected>{{ request.user.society }}</option>
+                {% else %}
+                    <option selected>그룹</option>
+                {% endif %}
+                <option value="중학교">중학교</option>
+                <option value="고등학교">고등학교</option>
+                <option value="회사">회사</option>
+                </select>
+            </div>
+            <!--전화번호-->
+            <div class="row mb-3 phone-custom">
+                <div>전화번호</div>
+                <div class="phoneNum">
+                    <input type="text" class="form-control firstNumber phNum-box" value="{{ firstNumber }}" aria-label="First number" maxlength="3">
+                    <div>-</div>
+                    <input type="text" class="form-control middleNumber phNum-box" value="{{ middleNumber }}" aria-label="Middle number" maxlength="4">   
+                    <div>-</div>
+                    <input type="text" class="form-control lastNumber phNum-box" value="{{ lastNumber }}" aria-label="Last number" maxlength="4">
+                </div>
+            </div>
+            <!-- 자기소개 -->
+            <div class="form-floating mb-3">
+                <textarea class="form-control introduce"  id="floatingTextarea2" style="height: 100px">{{ request.user.introduc }}</textarea>
+                <label for="floatingTextarea2">자기소개</label>
+            </div>
+            <div class="update-btn"><button class="selfUpdate btn btn-primary">수정</button></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

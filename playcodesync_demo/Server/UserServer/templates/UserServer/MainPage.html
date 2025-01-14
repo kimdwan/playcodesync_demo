@@ -1,0 +1,159 @@
+{% extends 'base/UserServer_base.html' %}
+{% load static %}
+
+{% block scripts %}
+<script defer type="module" src="{% static 'UserServer/js/functions.js' %}"></script>
+<script defer type="module" src="{% static 'UserServer/js/MainPage.js' %}"></script>
+<script defer type="module" src="{% static 'UserServer/js/MainPage_TimeRecord.js' %}"></script>
+<script defer type="module" src="{% static 'UserServer/js/MainPage_TimeRecord2.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'UserServer/css/MainPage.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>{{ request.user.username }}의 창</title>
+{% endblock %}
+
+{% block content %}
+
+<div id="guideModal" class="guideModal">
+    <div class="guideModal-content">
+        <div class="guideclose">&times;</div>
+    
+        <img src="{% static 'DoorServer/img/userguide_horizon.png' %}" style="width: 70%; margin-top: 120px;">
+
+        <!-- </div> -->
+    </div>
+</div>   
+
+<section class="info-section">
+    <div class="container px-4 dashB-container">
+        <div class="row dash-row-height mb-3 gx-3 dashB-row">
+            <div class="col-sm-4 mt-4">
+                <div id="guideButton" class="dashB-box h-100 box1">
+                    <h3 class="guide-font">
+                        <div class="username-gra"><b>{{ request.user.username }}님</b></div>
+                        <div><b>안녕하세요!</b> <i class="fas fa-hand-paper fa-rotate-45" style="color: #eacb2e;"></i></div>
+                    </h3>
+                    <p style="margin-top: 30px;">이곳을 클릭해 학습 방법을 알아보세요!</p>
+                    <div style="text-align: end; margin-right: 20px;"><i class="fas fa-level-up-alt fa-rotate-90 fa-lg"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 mt-4">
+                <div class="dashB-box h-100 box2">
+                    <div class="recentEdu">
+                        <h4><b>마지막으로 학습한 TOPIC입니다.</b></h4>
+                        <div class="userIdBox" data-id="{{ request.user.username }}"></div>
+                        <div class="recentInfo">
+                            <div><i class="fa-brands fa-python fa-2xl"></i></div>
+                            <div id="recentStudy" class="study-percent"></div>
+                        </div>
+                        <hr>
+                        <div class="recentWdw">
+                            <div id="recentBtn" class="recentWdw2">
+                                <div class="recentBtn">이어서 학습</div>
+                                <i class="fas fa-level-up-alt fa-rotate-90 fa-xl"></i>
+                            </div>
+                        </div>
+
+                        <!--
+                        <div style="display: flex; justify-content: end;">
+                            <div style="background-color: aliceblue; border-radius: 15px; padding: 2px 15px; border: 1.5px #bb56ff solid;">이어서 학습하기 <i class="fas fa-level-up-alt fa-rotate-90 fa-lg"></i></div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+         </div>
+        <hr style="color: rgb(230, 230, 230); border-top: 2px solid; ">
+        <div class="row dash-row-height mb-4 gx-3 dashB-row h-px"><h1 class="chapterInfo-ment" style="color: rgb(230, 230, 230); ">학습 현황</h1></div>
+        <div class="row dash-row-height mb-4 gx-3 dashB-row h-px">
+            <div id="classTime"  class="col-sm-8 mb-4">
+                <div id="timeButtonGroup" class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnradio1">일주일</label>
+                    
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio2">한달</label>
+                    
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio3">그룹</label>
+                </div>
+                <div class="dashB-box h-100 box6">
+                        <!-- 그래프 ----------------------->
+                        <p class="chapterInfo-n">최근 일주일 학습시간</p>
+                    <div class="recentStudy">
+                        <div id="studyTime-graph"></div>
+                    </div>
+                    <!-- --- ------------------------->
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="dashB-box h-100 box7">
+                    <div class="plusStudy">
+                        <p class="chapterInfo-n">총 공부 단원</p>
+                        <ul id="totalUserStudy" class="plusStudyData">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <hr style="color: rgb(230, 230, 230); border-top: 2px solid; ">
+        <div class="row dash-row-height mb-4 gx-3 dashB-row h-px" style="display: flex;">
+            <div style="display: flex; align-items: end; gap:20px;">
+                <h1 class="chapterInfo-ment" style="color: rgb(230, 230, 230);">Chapter</h1>
+                <h5 class="chapterInfo-ment" style="color:rgb(230, 230, 230);">원하는 챕터를 선택하세요</h5>
+            </div>
+        </div>
+        {% for sub in subject %}
+        <div class="row dash-row-height mb-4 gx-3 dashB-row h-px">
+            <div class="col-sm-4 mb-4">
+                <div class="dashB-box h-100 chapterInfo">
+                    <p class="chapterInfo-nm">변수와 입출력 / 자료형</p>
+                    <div class="chatInfo-ph">
+                        이 첫 번째 단원에서는 프로그래밍의 가장 기본적인 요소들을 배우게 됩니다.</br> <strong style="color: rgb(255, 255, 255);">변수</strong>는 데이터를 저장하는 컨테이너로 생각할 수 있으며, 파이썬에서는 다양한 <strong style="color: rgb(255, 255, 255);">자료형</strong>을 통해 <strong style="color: rgb(255, 255, 255);">숫자, 문자, 불리언(참/거짓)</strong> 등 여러 종류의 데이터를 다룰 수 있습니다. <strong style="color: rgb(255, 255, 255);">입출력</strong>은 프로그램과 사용자 간의 대화라고 할 수 있죠. 파이썬에서는 <strong style="color: rgb(255, 255, 255);">input()</strong> 함수로 사용자에게서 데이터를 받고, <strong style="color: rgb(255, 255, 255);">print()</strong> 함수로 정보를 화면에 출력합니다. 이 단원은 프로그래밍의 기초를 다지는 데 필수적입니다.
+                    </div>
+                    <a href="{% url 'DoorServer:UserServer:CodeTutorServer:MainPage' username sub 1 1 %}">
+                        <i id="chapterOne" class="fas fa-level-up-alt fa-rotate-90 fa-2xl chapBtn" style="position: absolute; right:25px; bottom: 25px;"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="dashB-box h-100 chapterInfo">
+                    <p class="chapterInfo-nm">제어문 / 함수</p>
+                    <div class="chatInfo-ph"><strong style="color: rgb(255, 255, 255);">제어문</strong>은 프로그램의 흐름을 제어합니다. 예를 들어 어떤 조건이 참일 때만 특정 작업을 수행하도록 할 수 있습니다. 이를 통해 학습자는 복잡한 문제를 단계별로 해결하는 논리적 사고를 배울 수 있습니다. <strong style="color: rgb(255, 255, 255);">함수</strong>는 특정 작업을 수행하는 코드의 집합으로, 코드를 재사용 가능하게 만들어 줍니다. 함수를 사용함으로써 학습자는 효율적으로 프로그램을 구성하는 방법을 배울 수 있습니다.</div>
+                    <a href="{% url 'DoorServer:UserServer:CodeTutorServer:MainPage' username sub 3 1 %}" ><i id="chapterTwo" class="fas fa-level-up-alt fa-rotate-90 fa-2xl chapBtn" style="position: absolute; right:25px; bottom: 25px;"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="dashB-box h-100 chapterInfo">
+                    <p class="chapterInfo-nm">Python 프로그래밍</p>
+                    <div class="chatInfo-ph">실제 파이썬 코드를 활용하여 프로젝트를 만드는 방법을 배웁니다. 예를 들어, 계산기를 만들기 위한 코드를 작성하거나 숫자 맞추기 게임을 프로그래밍하는 것을 통해 학습자는 이론적 지식을 실제로 적용해 볼 수 있습니다. 이 과정에서 중요한 프로그래밍 개념을 실습하고, 문제 해결 능력을 키울 수 있습니다.</div>
+                    <a href="{% url 'DoorServer:UserServer:CodeTutorServer:MainPage' username sub 5 1 %}" ><i id="chapterThree" class="fas fa-level-up-alt fa-rotate-90 fa-2xl chapBtn" style="position: absolute; right:25px; bottom: 25px;"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    <!-- <div class="dashContainer">
+        <div class="progContainer">
+            <h1>학습 진행 사항</h1>
+        </div>
+        <div class="lastContainer">
+            <h1>마지막으로 본 장소</h1>
+        </div>
+        <div class="weakContainer">
+            <h1>오답율</h1>
+        </div>
+    
+    </div>
+    
+    <div class="mainContainer">
+        <div class="mainImage">
+            <h1>사진들어갈 창 </h1>
+        </div>
+        <p> -->
+    </div>
+</section>
+{% endblock %}

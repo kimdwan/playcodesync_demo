@@ -1,0 +1,124 @@
+{% extends 'base/CodeTutor_base.html' %}
+{% load static %}
+
+{% block title %}
+<title>코드튜터</title>
+{% endblock %}
+
+{% block scripts %}
+<script defer type="module" src="{% static 'CodeTutorServer/js/MainPage.js' %}"></script>
+<script defer src="{% static 'CodeTutorServer/js/ace-editor/src-noconflict/ace.js' %}"></script>
+<script defer src="{% static 'CodeTutorServer/js/ace-editor/src-noconflict/ext-language_tools.js' %}"></script>
+<script defer src="{% static 'CodeTutorServer/js/MainPage_editor.js' %}"></script>
+<script defer type="module" src="{% static 'CodeTutorServer/js/MainPage_booksection.js' %}"></script>
+<script defer type='module' src ="{% static 'CodeTutorServer/js/MainPage_websocket.js' %}"></script>
+<script defer type="module" src ="{% static 'CodeTutorServer/js/MainPage_code.js' %}"></script>
+<script defer type="module" src="{% static 'CodeTutorServer/js/MainPage_folder.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel='stylesheet' href="{% static 'CodeTutorServer/css/MainPage.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="navbar">
+    <div style="display: flex;">
+        <button id="toggleButton"><i class="sidebar-tb fas fa-stream fa-2x"></i></button> 
+        <div class="su-ch-to" id="check_topic_list"><div id="headSub" style="display: inline;" data-subject="{{ origin_subject }}">{{ origin_subject }}</div><div id="headChap" style="display: inline;"><!--chapter >--></div><div id='headTopic' style="display: inline;"><!--topic >--></div></div> <!-- 진행중인 토픽 표시 -->
+            <div id="sidebar" class="sidebar"> <!-- 사이드바 -->
+                <button id="closeButton" class="close-btn"><i class="fas fa-sign-in-alt fa-rotate-180 fa-2x" data-chapter="{{ chap }}"></i></button>
+                {% for chap in chapter %}
+                <div class="chapterToggle">
+                    <div id="chapterName" class="chapterName" data-chapter="{{ chap }}">
+                        {{ chap }}
+                    </div>
+                    <div id="chapterToggle2" class="chapterToggle2" data-chapter="{{ chap }}"><i id="upBtn" class="fas fa-chevron-down fa-lg"></i></div>
+                </div>
+                <ul id="topicList" class="topicList" data-chapter="{{ chap }}">
+                    {% for top in topic  %}
+                    {% if top.chapter_id == chap.pk %}
+                        <li id="topicItem" data-name="{{ top }}">{{ top }}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endfor %}
+            </div>
+    </div>
+    <div class="nav-link">
+        <a id="userHistory"><i id ="userHistoryI" class="navicon fas fa-book-open fa-xl"></i></a>
+        <div id="userHistory-popup">
+            <div id="historyList"></div>
+        </div>
+        <a id="userInfo"><i class="navicon fas fa-address-card fa-xl"></i></a>
+        <div id="userInfo-popup">
+            <div class="userInfo-ni">
+                <div class="userFavicon"><img src="{% static 'CodeTutorServer/img/userfavicon.png' %}" width="50px"></div>
+                <div>
+                    <div>{{ request.user.username }}</div>
+                    <div style="font-size: 13px; color: rgb(128, 128, 128);">{{ request.user.email }}</div>
+                </div>
+            </div>
+            <div class="userInfo-btn">
+                <a href="{% url 'DoorServer:UserServer:UpdatePage' request.user.username %}"><button id="accountInfo-change-popup" class="accountInfo-change-popup">회원 정보 수정 ></button></a>
+                <a class="logOutbtn-popup" href="{% url 'DoorServer:LogoutPage' %}">Sign Out</a>
+            </div>
+        </div>
+        <a id="themeCh" onclick="toggleTheme()"><i class="navicon fas fa-cog fa-xl"></i></a>
+    </div>
+</div>
+<div class="container">
+    <div id="book-section" class="book-section" ></div> <!-- 컨텐츠 나오는 부분 -->
+    <div class="resizer" data-direction="horizontal"></div>
+    <div class="right-section">
+        <div class="chatcontents" id="chatcontents" data-filename="없음"> <!-- 채팅 나오는 부분 -->
+            <div class="embossed-mo">
+                <div class="embossed-img"><img src="{% static 'CodeTutorServer/img/TranLogo.png' %}" width="800px"></div>
+            </div>
+            <!--
+            <div id="user-chat" class="chat user-chat">안녕하세요</div> 
+            <div id="ai-chat" class="chat ai-chat">안녕하세요</div>     
+            -->
+        </div>
+        <div class="resizer" data-direction="vertical"></div>
+        <div id="editor" class="editor"></div> <!-- 에디터 -->
+        <!--
+        <div style="position:absolute; width:500; height: 500; right:0; bottom:100px; z-index: 150; background-color: aliceblue;" id="historyDb">
+            <h1>유저 정보 저장</h1>
+            <ul id="historyList"></ul>
+        </div>
+        -->
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-left">
+        <div>
+            <i class="far fa-clock fa-lg"></i>
+        </div>
+        <div id="timer">00 : 00 : 00</div>
+    </div>
+    <div class="footer-mid">
+        <div>
+            <button id="footerLeftButton" class="bt-nm leftButton"><i id="footerLeftButtonIbutton" class="fas fa-reply fa-lg"></i></button> <!-- 이전컨텐츠 -->
+        </div>
+        <div class="topic-count" id="topic-count">
+            <div id="topic-count-current" style="display: inline;"><!--1--></div>/<div id="topic-count-total" style="display: inline;"><!--3--></div>
+        </div>
+        <div>
+            <button id="footerRightButton" class="bt-nm rightButton"><i id="footerRightButtonIbutton" class="fas fa-reply fa-flip-horizontal fa-lg"></i></button> <!-- 다음 컨텐츠 -->
+        </div>
+    </div>
+    <div class="footer-right">
+        <button id="start" class="start-btn">학습시작</button>
+        <button id="run" class="run-btn" title="Ctrl + Enter">코드실행</button> <!-- 코드실행 -->
+        <button id="check" class="check-btn" title="Enter"><i class="fa-solid fa-comments fa-lg" style="color: #fafafa;"></i></button>
+        <div id="code-output-toggle"> <!-- 코드 실행 + 결과창 토글 -->
+            <p>&lt/&gt 실행 결과</p>
+            <pre id="output" style="display: block;">
+            </pre> <!-- 코드 결과 나오는 부분 -->
+            <button id="op-toggle"> <!-- 코드 실행 토글창 숨김 버튼 -->
+                <i class="fas fa-chevron-down fa-lg"></i>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
